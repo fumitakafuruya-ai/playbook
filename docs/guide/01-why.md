@@ -35,7 +35,7 @@
 
 | プロジェクト | 何をするか | 置き換えたもの |
 |------------|-----------|--------------|
-| DayMatrix | 日記・会計・活動の統合管理 | Excel + Notion + 手帳 |
+| 業務管理アプリ | 日常業務の統合管理 | Excel + Notion + 手帳 |
 | Hibana | SNS投稿の計画と分析 | Notion + 手動集計 |
 | APOGRP | 不動産・建物・労務の管理 | Power BI |
 | EO Survey | 組織サーベイの収集と可視化 | Googleフォーム + Canva |

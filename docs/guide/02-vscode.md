@@ -78,7 +78,7 @@ VS Codeの画面は4つのエリアに分かれています：
 📊 EO Survey
 🏢 APOGRP
 📈 ライフライン
-📅 DayMatrix
+📅 業務管理アプリ
 📱 Hibana
 ```
 

@@ -8,7 +8,7 @@
 
 | # | プロジェクト | バージョン | 内容 |
 |---|------------|-----------|------|
-| 1 | DayMatrix | v0.19 | ライフログ管理 |
+| 1 | 業務管理アプリ | v0.19 | 日常業務の統合管理 |
 | 2 | Hibana | v0.1 | SNS管理 + プレゼン |
 | 3 | APOGRP | v0.1 | 自社経営管理 |
 | 4 | EO Survey | v0.1 | 組織サーベイ |
@@ -30,7 +30,7 @@ D:\fumitaka\Dropbox\dev\
 ├── apogrp/
 ├── eo-survey/
 ├── lifeline/
-├── lifelog/
+├── my-app/
 ├── sns-manager/
 ├── 5percent-update/
 ├── playbook/
@@ -72,7 +72,7 @@ Claude Codeのスキルで `/project-status` を登録すると：
 
 | プロジェクト | GitHub同期 | 未コミット | 最終更新 |
 |------------|-----------|-----------|---------|
-| DayMatrix | 最新 | 0件 | 4/7 — v0.19 |
+| 業務管理アプリ | 最新 | 0件 | 4/7 — v0.19 |
 | Hibana | 最新 | 0件 | 4/7 — プレゼン統合 |
 | APOGRP | 最新 | 0件 | 4/3 — リネーム |
 
