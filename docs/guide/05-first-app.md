@@ -27,7 +27,7 @@ cd my-first-app
 npm run dev
 ```
 
-ブラウザで http://localhost:3000 を開くと、Next.jsの初期ページが表示されます。
+ブラウザで `http://localhost:3000` を開くと、Next.jsの初期ページが表示されます。
 
 **これだけで、Webアプリが動いています。**
 
