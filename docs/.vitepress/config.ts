@@ -61,8 +61,13 @@ export default defineConfig({
       },
     ],
     socialLinks: [
+      { icon: 'facebook', link: 'https://www.facebook.com/furuyafumitaka/' },
       { icon: 'github', link: 'https://github.com/fumitakafuruya-ai/playbook' }
     ],
+    footer: {
+      message: '<a href="https://www.facebook.com/furuyafumitaka/" target="_blank">古屋 文隆（Fumitaka Furuya）</a>',
+      copyright: 'Copyright &copy; 2026 Fumitaka Furuya. All rights reserved.'
+    },
     search: {
       provider: 'local'
     },
