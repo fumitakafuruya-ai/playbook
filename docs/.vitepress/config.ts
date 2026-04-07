@@ -14,6 +14,7 @@ export default defineConfig({
         text: 'はじめに',
         items: [
           { text: 'このプレイブックについて', link: '/guide/' },
+          { text: '2週間の記録 — ゼロから8プロジェクトへ', link: '/guide/00-journey' },
         ]
       },
       {
