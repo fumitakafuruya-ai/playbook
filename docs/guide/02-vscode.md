@@ -76,7 +76,7 @@ VS Codeの画面は4つのエリアに分かれています：
 サイドバー:
 📚 EO Learning
 📊 EO Survey
-🏢 APOGRP
+🏢 自社管理アプリ
 📈 ライフライン
 📅 業務管理アプリ
 📱 Hibana

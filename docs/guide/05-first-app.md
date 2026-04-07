@@ -16,7 +16,7 @@
 VS Codeのターミナルで：
 
 ```bash
-cd D:\fumitaka\Dropbox\dev
+cd D:\dev
 npx create-next-app@latest my-first-app
 ```
 
