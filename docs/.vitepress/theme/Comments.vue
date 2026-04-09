@@ -1,8 +1,11 @@
 <template>
   <div class="comments-section">
     <hr />
-    <h3>コメント・質問</h3>
-    <p class="comments-note">このページについてのメモや質問を残せます。GitHubアカウントでログインしてください。</p>
+    <h3>コメント・フィードバック</h3>
+    <p class="comments-note">
+      このページについてのコメントや質問を残せます（GitHubアカウントが必要です）。<br />
+      GitHubアカウントをお持ちでない方は<a href="/guide/feedback">こちらからフィードバック</a>をお寄せください。
+    </p>
     <Giscus
       repo="fumitakafuruya-ai/playbook"
       repo-id="R_kgDOR8E0WQ"

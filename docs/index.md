@@ -1,16 +1,16 @@
 ---
 layout: home
 hero:
-  name: 経営者のAI開発プレイブック
-  text: コードが書けなくても、アプリは作れる
+  name: "経営者のAI開発\nプレイブック"
+  text: "コードが書けなくても\nアプリは作れる"
   tagline: "著者：古屋 文隆（Fumitaka Furuya）— プログラミング未経験の経営者が、Claude × VS Code で自社アプリを作るための実践ガイド"
   actions:
     - theme: brand
-      text: 読み始める
+      text: 最初から読む
       link: /guide/
     - theme: alt
-      text: Facebook
-      link: https://www.facebook.com/furuyafumitaka/
+      text: 章から選んで読む
+      link: /guide/#chapters
 features:
   - title: 経営者の視点で書かれている
     details: 技術用語を噛み砕き、「なぜこれが経営に役立つのか」から説明します。筆者自身が51歳でゼロから始めた実体験ベースです。
