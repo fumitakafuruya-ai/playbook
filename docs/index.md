@@ -2,8 +2,8 @@
 layout: home
 hero:
   name: "AI Playbook\nfor CEOs"
-  text: "コードが書けなくても\nアプリは作れる"
-  tagline: "経営者のAI開発実践ガイド — プログラミング未経験の経営者が、Claude × VS Code で自社アプリを作るための実践ガイド"
+  text: "ExcelとPower BIに\n限界を感じていませんか？"
+  tagline: "その先がある。コードが書けなくても、自分だけの業務アプリは作れる。"
   actions:
     - theme: brand
       text: 最初から読む
