@@ -3,7 +3,7 @@ layout: home
 hero:
   name: "CC Playbook\nfor CEOs"
   text: "Excel・ChatGPT・Geminiに\n限界を感じていませんか？"
-  tagline: "その先がある。コードが書けなくても、自分だけの業務アプリは作れる。"
+  tagline: "その先がある。コードが書けなくても、\n自分だけの業務アプリは作れる。"
   actions:
     - theme: brand
       text: 最初から読む
