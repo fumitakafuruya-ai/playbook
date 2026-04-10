@@ -1,11 +1,11 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  title: 'AI Playbook for CEOs',
+  title: 'CC Playbook for CEOs',
   description: 'プログラミング未経験の経営者が、Claude × VS Code で自社アプリを作るための実践ガイド',
   lang: 'ja',
   head: [
-    ['meta', { property: 'og:title', content: 'AI Playbook for CEOs — 経営者のAI開発実践ガイド' }],
+    ['meta', { property: 'og:title', content: 'CC Playbook for CEOs — Claude Code 経営者実践ガイド' }],
     ['meta', { property: 'og:description', content: 'コードが書けなくても、アプリは作れる。51歳からのAI開発実践ガイド。' }],
     ['meta', { property: 'og:type', content: 'website' }],
   ],
