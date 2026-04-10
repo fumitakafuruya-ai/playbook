@@ -1,0 +1,5 @@
+/* ヒーローのtext（サブコピー）を小さめに */
+.VPHero .text {
+  font-size: 32px !important;
+  line-height: 1.3 !important;
+}
