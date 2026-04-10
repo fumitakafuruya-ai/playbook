@@ -2,7 +2,7 @@
 layout: home
 hero:
   name: "AI Playbook\nfor CEOs"
-  text: "Excelに\n限界を感じていませんか？"
+  text: "Excel・ChatGPT・Geminiに\n限界を感じていませんか？"
   tagline: "その先がある。コードが書けなくても、自分だけの業務アプリは作れる。"
   actions:
     - theme: brand
