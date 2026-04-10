@@ -168,4 +168,4 @@ npm update -g @anthropic-ai/claude-code
 
 一度仕組みを作れば、新しいPCでも **1コマンドで同じ環境が手に入る** ようになります。
 
-[次のページ：トラブルシューティング →](/guide/99-troubleshooting)
+[第8章：MCPで外部サービスに繋げる →](./08-mcp)

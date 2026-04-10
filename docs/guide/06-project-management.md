@@ -27,10 +27,10 @@
 
 ```
 D:\dev\
-├── apogrp/
+├── project-a/          ← 業務管理アプリ
+├── project-b/          ← 経営管理アプリ
 ├── eo-survey/
 ├── lifeline/
-├── my-app/
 ├── sns-manager/
 ├── 5percent-update/
 ├── playbook/

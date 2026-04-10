@@ -18,6 +18,7 @@ export default defineConfig({
       {
         text: '章から選ぶ',
         items: [
+          { text: '\u26a0\ufe0f プロンプトの出し方（最重要）', link: '/guide/prompt-craft' },
           { text: '序章：2週間の記録', link: '/guide/00-journey' },
           { text: '第1章：なぜ自分で作るのか', link: '/guide/01-why' },
           { text: '第2章：VS Codeを司令塔にする', link: '/guide/02-vscode' },
@@ -26,6 +27,8 @@ export default defineConfig({
           { text: '第5章：最初のアプリを作る', link: '/guide/05-first-app' },
           { text: '第6章：プロジェクトを管理する', link: '/guide/06-project-management' },
           { text: '第7章：2台のPCで同じ環境を使う', link: '/guide/07-multi-pc' },
+          { text: '第8章：MCPでClaude Codeを外部サービスに繋げる', link: '/guide/08-mcp' },
+          { text: '筆者について — Code Runner F', link: '/guide/about-author' },
           { text: '付録：トラブルシューティング', link: '/guide/99-troubleshooting' },
         ]
       },
@@ -48,6 +51,12 @@ export default defineConfig({
           ]
         },
         {
+          text: '最重要',
+          items: [
+            { text: '\u26a0\ufe0f プロンプトの出し方', link: '/guide/prompt-craft' },
+          ]
+        },
+        {
           text: '作って動かす',
           items: [
             { text: '第4章：Claude Codeと開発する', link: '/guide/04-claude-code' },
@@ -59,12 +68,14 @@ export default defineConfig({
           items: [
             { text: '第6章：プロジェクトを管理する', link: '/guide/06-project-management' },
             { text: '第7章：2台のPCで同じ環境を使う', link: '/guide/07-multi-pc' },
+            { text: '第8章：MCPで外部サービスに繋げる', link: '/guide/08-mcp' },
           ]
         },
         {
           text: '付録',
           items: [
             { text: 'トラブルシューティング', link: '/guide/99-troubleshooting' },
+            { text: '筆者について — Code Runner F', link: '/guide/about-author' },
             { text: '変更履歴', link: '/guide/changelog' },
             { text: 'フィードバック', link: '/guide/feedback' },
           ]
