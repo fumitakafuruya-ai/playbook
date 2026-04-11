@@ -60,7 +60,7 @@ onUnmounted(() => {
   <div class="sticky-board">
     <hr class="board-divider" />
 
-    <StickyNoteForm :page-path="pagePath" @posted="fetchComments" />
+    <StickyNoteForm :page-path="pagePath" />
 
     <div v-if="comments.length > 0" class="notes-section">
       <h3>みんなの付箋（{{ comments.length }}件）</h3>
