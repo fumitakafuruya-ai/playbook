@@ -49,6 +49,11 @@ watch(pagePath, () => {
   subscribe()
 })
 
+async function deleteComment(id: string) {
+  await supabase.from('playbook_comments').delete().eq('id', id)
+  comments.value = comments.value.filter(c => c.id !== id)
+}
+
 onUnmounted(() => {
   if (channel) supabase.removeChannel(channel)
 })
@@ -68,10 +73,12 @@ onUnmounted(() => {
         <StickyNote
           v-for="c in comments"
           :key="c.id"
+          :id="c.id"
           :author-name="c.author_name"
           :message="c.message"
           :color="c.color"
           :created-at="c.created_at"
+          @delete="deleteComment"
         />
       </div>
     </div>

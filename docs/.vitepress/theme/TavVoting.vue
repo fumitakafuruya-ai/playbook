@@ -46,6 +46,16 @@ onUnmounted(() => {
   if (channel) supabase.removeChannel(channel)
 })
 
+function isOwner(name: string): boolean {
+  return (localStorage.getItem('playbook_name') || '') === name
+}
+
+async function deleteEntry(id: string) {
+  if (!confirm('この気づきを削除しますか？')) return
+  await supabase.from('playbook_tav_votes').delete().eq('id', id)
+  entries.value = entries.value.filter(e => e.id !== id)
+}
+
 async function submit() {
   if (!authorName.value.trim() || !message.value.trim()) return
   submitting.value = true
@@ -76,6 +86,7 @@ async function submit() {
 
     <div v-if="entries.length > 0" class="tav-entries">
       <div v-for="e in entries" :key="e.id" class="tav-entry">
+        <button v-if="isOwner(e.voter_name)" class="tav-delete-btn" @click="deleteEntry(e.id)">x</button>
         <p class="tav-message">{{ e.tav_message || '' }}</p>
         <span class="tav-author">— {{ e.voter_name }}</span>
       </div>
@@ -118,12 +129,28 @@ async function submit() {
 
 .tav-entries { margin-bottom: 16px; }
 .tav-entry {
+  position: relative;
   padding: 12px 16px;
   background: #fff;
   border-left: 3px solid #4CAF50;
   border-radius: 2px;
   margin-bottom: 8px;
 }
+.tav-delete-btn {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  background: none;
+  border: none;
+  font-size: 0.85rem;
+  color: #999;
+  cursor: pointer;
+  padding: 2px 5px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.tav-entry:hover .tav-delete-btn { opacity: 1; }
+.tav-delete-btn:hover { color: #d32f2f; }
 .tav-message {
   margin: 0 0 4px;
   font-size: 0.9rem;

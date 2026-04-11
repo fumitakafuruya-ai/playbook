@@ -1,12 +1,22 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 const props = defineProps<{
+  id: string
   authorName: string
   message: string
   color: string
   createdAt: string
 }>()
 
+const emit = defineEmits<{ delete: [id: string] }>()
+
 const rotation = Math.random() * 4 - 2
+
+const isOwner = computed(() => {
+  const savedName = localStorage.getItem('playbook_name') || ''
+  return savedName === props.authorName
+})
 
 function timeAgo(dateStr: string): string {
   const diff = Date.now() - new Date(dateStr).getTime()
@@ -18,6 +28,12 @@ function timeAgo(dateStr: string): string {
   const day = Math.floor(hr / 24)
   return `${day}日前`
 }
+
+function confirmDelete() {
+  if (confirm('この付箋を削除しますか？')) {
+    emit('delete', props.id)
+  }
+}
 </script>
 
 <template>
@@ -25,6 +41,7 @@ function timeAgo(dateStr: string): string {
     class="sticky-note"
     :style="{ backgroundColor: color, transform: `rotate(${rotation}deg)` }"
   >
+    <button v-if="isOwner" class="delete-btn" @click="confirmDelete" title="削除">x</button>
     <p class="sticky-message">{{ message }}</p>
     <div class="sticky-footer">
       <span class="sticky-author">— {{ authorName }}</span>
@@ -34,7 +51,24 @@ function timeAgo(dateStr: string): string {
 </template>
 
 <style scoped>
+.delete-btn {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  background: none;
+  border: none;
+  font-size: 0.85rem;
+  color: #999;
+  cursor: pointer;
+  padding: 2px 5px;
+  line-height: 1;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.sticky-note:hover .delete-btn { opacity: 1; }
+.delete-btn:hover { color: #d32f2f; }
 .sticky-note {
+  position: relative;
   width: 220px;
   min-height: 130px;
   padding: 16px 16px 12px;
