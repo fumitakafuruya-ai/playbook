@@ -9,7 +9,7 @@ import TavVoting from './TavVoting.vue'
 const route = useRoute()
 const { frontmatter } = useData()
 const pagePath = computed(() => route.path)
-const showTav = computed(() => frontmatter.value?.tav === true)
+const showTav = computed(() => frontmatter.value?.tav !== false)
 
 const comments = ref<any[]>([])
 let channel: any = null
