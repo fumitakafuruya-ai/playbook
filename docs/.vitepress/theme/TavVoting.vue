@@ -86,10 +86,14 @@ async function submit() {
 
     <div v-if="entries.length > 0" class="tav-entries">
       <h4 class="tav-entries-title">みんなのTAV（{{ entries.length }}件）</h4>
-      <div v-for="e in entries" :key="e.id" class="tav-entry">
-        <button v-if="isOwner(e.voter_name)" class="tav-delete-btn" @click="deleteEntry(e.id)">x</button>
-        <p class="tav-message">{{ e.tav_message || '' }}</p>
-        <span class="tav-author">— {{ e.voter_name }}</span>
+      <div class="tav-grid">
+        <div v-for="e in entries" :key="e.id" class="tav-note" :style="{ transform: `rotate(${(Math.random() * 4 - 2)}deg)` }">
+          <button v-if="isOwner(e.voter_name)" class="tav-delete-btn" @click="deleteEntry(e.id)">x</button>
+          <p class="tav-message">{{ e.tav_message || '' }}</p>
+          <div class="tav-footer">
+            <span class="tav-author">— {{ e.voter_name }}</span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -128,14 +132,29 @@ async function submit() {
 .tav-note { margin: 0 0 16px; font-size: 0.8rem; color: #555; }
 
 .tav-entries { margin-bottom: 16px; }
-.tav-entries-title { font-size: 1rem; margin: 0 0 10px; }
-.tav-entry {
+.tav-entries-title { font-size: 1.1rem; margin: 0 0 12px; }
+.tav-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.tav-note {
   position: relative;
-  padding: 12px 16px;
-  background: #fff;
-  border-left: 3px solid #4CAF50;
+  width: 220px;
+  min-height: 130px;
+  padding: 16px 16px 12px;
+  background: #C8E6C9;
+  box-shadow: 2px 3px 7px rgba(0, 0, 0, 0.15);
   border-radius: 2px;
-  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s;
+  cursor: default;
+}
+.tav-note:hover {
+  transform: scale(1.04) rotate(0deg) !important;
+  z-index: 1;
 }
 .tav-delete-btn {
   position: absolute;
@@ -150,17 +169,23 @@ async function submit() {
   opacity: 0;
   transition: opacity 0.2s;
 }
-.tav-entry:hover .tav-delete-btn { opacity: 1; }
+.tav-note:hover .tav-delete-btn { opacity: 1; }
 .tav-delete-btn:hover { color: #d32f2f; }
 .tav-message {
-  margin: 0 0 4px;
+  margin: 0;
   font-size: 0.9rem;
   line-height: 1.5;
   white-space: pre-wrap;
   word-break: break-word;
 }
-.tav-author { font-size: 0.75rem; color: #666; }
-.tav-count { font-size: 0.8rem; color: #666; margin: 8px 0 0; }
+.tav-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+.tav-author { font-weight: 600; }
 
 textarea {
   width: 100%;
