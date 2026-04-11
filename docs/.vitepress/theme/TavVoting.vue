@@ -85,12 +85,12 @@ async function submit() {
     <p class="tav-note">このページを読んで得た気づきや学びを共有してください。</p>
 
     <div v-if="entries.length > 0" class="tav-entries">
+      <h4 class="tav-entries-title">みんなのTAV（{{ entries.length }}件）</h4>
       <div v-for="e in entries" :key="e.id" class="tav-entry">
         <button v-if="isOwner(e.voter_name)" class="tav-delete-btn" @click="deleteEntry(e.id)">x</button>
         <p class="tav-message">{{ e.tav_message || '' }}</p>
         <span class="tav-author">— {{ e.voter_name }}</span>
       </div>
-      <p class="tav-count">{{ entries.length }}件の気づき</p>
     </div>
 
     <form @submit.prevent="submit" class="tav-form">
@@ -108,10 +108,10 @@ async function submit() {
       <div class="form-actions">
         <span class="char-count">{{ message.length }}/500</span>
         <button type="submit" :disabled="submitting">
-          {{ submitting ? '送信中...' : '共有する' }}
+          {{ submitting ? '送信中...' : '貼る' }}
         </button>
       </div>
-      <p v-if="success" class="success-msg">共有しました！</p>
+      <p v-if="success" class="success-msg">TAVを貼りました！</p>
     </form>
   </div>
 </template>
@@ -128,6 +128,7 @@ async function submit() {
 .tav-note { margin: 0 0 16px; font-size: 0.8rem; color: #555; }
 
 .tav-entries { margin-bottom: 16px; }
+.tav-entries-title { font-size: 1rem; margin: 0 0 10px; }
 .tav-entry {
   position: relative;
   padding: 12px 16px;
