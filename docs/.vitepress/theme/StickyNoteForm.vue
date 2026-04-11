@@ -8,10 +8,20 @@ const emit = defineEmits<{ posted: [] }>()
 const name = ref('')
 const email = ref('')
 const message = ref('')
+const category = ref('感想')
 const posting = ref(false)
 const success = ref(false)
 
-const colors = ['#FFF9C4', '#C8E6C9', '#BBDEFB', '#F8BBD0', '#FFE0B2', '#E1BEE7']
+const categories = [
+  { label: 'TAV', color: '#C8E6C9' },
+  { label: '感想', color: '#FFF9C4' },
+  { label: '要望', color: '#BBDEFB' },
+  { label: 'その他', color: '#E1BEE7' },
+]
+
+function getColor(cat: string) {
+  return categories.find(c => c.label === cat)?.color || '#FFF9C4'
+}
 
 onMounted(() => {
   name.value = localStorage.getItem('playbook_name') || ''
@@ -24,13 +34,12 @@ async function submit() {
   localStorage.setItem('playbook_name', name.value.trim())
   if (email.value.trim()) localStorage.setItem('playbook_email', email.value.trim())
 
-  const color = colors[Math.floor(Math.random() * colors.length)]
   const { error } = await supabase.from('playbook_comments').insert({
     page_path: props.pagePath,
     author_name: name.value.trim(),
     email: email.value.trim(),
-    message: message.value.trim(),
-    color,
+    message: `[${category.value}] ${message.value.trim()}`,
+    color: getColor(category.value),
   })
   posting.value = false
   if (!error) {
@@ -45,15 +54,28 @@ async function submit() {
 <template>
   <div class="sticky-form">
     <h3>付箋を貼る</h3>
-    <p class="form-note">コメントや感想を付箋として残せます。ログイン不要です。</p>
+    <p class="form-note">TAV・感想・要望を付箋として残せます。ログイン不要です。</p>
     <form @submit.prevent="submit">
+      <div class="category-row">
+        <button
+          v-for="cat in categories"
+          :key="cat.label"
+          type="button"
+          class="cat-btn"
+          :class="{ selected: category === cat.label }"
+          :style="{ backgroundColor: category === cat.label ? cat.color : '#f5f5f5', borderColor: cat.color }"
+          @click="category = cat.label"
+        >
+          {{ cat.label }}
+        </button>
+      </div>
       <div class="form-row">
         <input v-model="name" type="text" placeholder="お名前（必須）" maxlength="50" required />
         <input v-model="email" type="email" placeholder="メールアドレス（任意）" />
       </div>
       <textarea
         v-model="message"
-        placeholder="コメントを書いてください..."
+        :placeholder="category === 'TAV' ? 'この章で得た気づきや学びを書いてください...' : category === '要望' ? '追加してほしい内容や改善点を書いてください...' : 'コメントを書いてください...'"
         maxlength="500"
         rows="3"
         required
@@ -86,6 +108,23 @@ async function submit() {
   font-size: 0.8rem;
   color: #666;
 }
+.category-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.cat-btn {
+  padding: 6px 16px;
+  border: 2px solid #ddd;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  color: #333;
+}
+.cat-btn:hover { opacity: 0.8; }
+.cat-btn.selected { border-width: 2px; }
 .form-row {
   display: flex;
   gap: 8px;
@@ -117,7 +156,7 @@ textarea {
   font-size: 0.75rem;
   color: #999;
 }
-button {
+button[type="submit"] {
   padding: 8px 24px;
   background: #3451b2;
   color: #fff;
@@ -126,8 +165,8 @@ button {
   font-size: 0.9rem;
   cursor: pointer;
 }
-button:hover { background: #2c3e94; }
-button:disabled { opacity: 0.5; cursor: not-allowed; }
+button[type="submit"]:hover { background: #2c3e94; }
+button[type="submit"]:disabled { opacity: 0.5; cursor: not-allowed; }
 .success-msg {
   margin: 8px 0 0;
   color: #2e7d32;
