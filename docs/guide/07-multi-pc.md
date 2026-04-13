@@ -148,6 +148,49 @@ npm update -g @anthropic-ai/claude-code
 検出順序: %USERPROFILE%\Dropbox → D:\fumitaka\Dropbox
 ```
 
+## 重要：ソースコードはDropboxに置かない
+
+::: danger 実体験からの教訓
+Dropboxの中にgitリポジトリ（ソースコード）を置くと、以下の深刻な問題が起きます：
+
+1. **スマートシンクでファイルが読めなくなる** — 「オンラインのみ」になったファイルをgitが読めず、リポジトリが壊れる
+2. **ファイルロックの競合** — Dropboxの同期プロセスがgitのファイルを掴み、コミットやプッシュがハングする
+3. **node_modulesの大量同期** — 数万ファイルの同期が発生し、Dropboxもgitも不安定になる
+
+実際にリポジトリが完全に壊れ、再構築が必要になりました。
+:::
+
+### 正しい構成
+
+```
+C:/dev/                    ← ソースコードはローカルに置く
+├── lifelog/
+├── sns-manager/
+└── playbook/
+
+Dropbox/                   ← Dropboxはドキュメント用
+├── Claude-skills/         ← Claude Codeの設定共有はOK
+├── 写真・PDF・Excel/     ← git管理しないファイル
+```
+
+### 2台のPCでコードを共有する方法
+
+GitHubが同期の役割を果たします。Dropboxは不要です。
+
+```
+デスクトップ（C:/dev/myapp/）
+    ↓ git push
+  GitHub（クラウド上のマスターコピー）
+    ↓ git pull
+ノートPC（C:/dev/myapp/）
+```
+
+- `git pull` — GitHubから最新を取得（自分で実行した時だけ）
+- `git push` — GitHubに反映（自分で実行した時だけ）
+- Dropboxのような自動同期は一切なし → だからファイルが壊れない
+
+**GitHubが常に最新のマスターコピーを持っている**ので、どちらのPCが壊れても `git clone` で復元できます。
+
 ## よくあるトラブル
 
 | 症状 | 原因 | 対処法 |
